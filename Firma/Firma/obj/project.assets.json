@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\c#projects\\Firma\\Firma\\Firma.csproj",
+      "projectUniqueName": "C:\\c#projects\\Firma\\Firma\\Firma.csproj",
       "projectName": "Firma",
-      "projectPath": "D:\\c#projects\\Firma\\Firma\\Firma.csproj",
+      "projectPath": "C:\\c#projects\\Firma\\Firma\\Firma.csproj",
       "packagesPath": "C:\\Users\\vipel\\.nuget\\packages\\",
-      "outputPath": "D:\\c#projects\\Firma\\Firma\\obj\\",
+      "outputPath": "C:\\c#projects\\Firma\\Firma\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vipel\\AppData\\Roaming\\NuGet\\NuGet.Config",
