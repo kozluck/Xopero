@@ -1,4 +1,5 @@
 ﻿using Firma.views;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
@@ -18,9 +19,18 @@ namespace Firma
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
-            employeeController.removeEmployeeFromListById(employeesList.SelectedIndex);
-            employeesList.ItemsSource = "";
-            employeesList.ItemsSource = employeeController.getEmployees();
+            List<Employee> employees = employeeController.getEmployees();
+            if(employees.Count != 0)
+            {
+                employeeController.removeEmployeeFromListById(employeesList.SelectedIndex);
+                employeesList.ItemsSource = "";
+                employeesList.ItemsSource = employeeController.getEmployees();
+            }
+            else
+                MessageBox.Show("Your employees list is empty.", "Error");
+            
+
+            
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
@@ -36,7 +46,6 @@ namespace Firma
             this.Hide();
             Window editContractWindow = new editContractView(selectedId);
             editContractWindow.Show();
-
         }
     }
 }

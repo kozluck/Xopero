@@ -12,7 +12,7 @@ class Employee
     {
         this.name = name;
         this.surname = surname;
-        this.contract = new Contract("Staż");
+        this.contract = new Internship();
     }
 
     public void setContract(Contract contract) => this.contract = contract;

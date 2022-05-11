@@ -17,7 +17,11 @@ namespace Firma
             Employee employee = new Employee(name.Text, surname.Text);
             try
             {
-                employee.setContract(new Contract(typeOfContract.Text, Int32.Parse(monthlyRate.Text), int.Parse(overtimeAmount.Text)));
+                if (typeOfContract.Text.Equals("Staż"))
+                    employee.setContract(new Internship(Int32.Parse(monthlyRate.Text), int.Parse(overtimeAmount.Text)));
+                else
+                    employee.setContract(new Fulltime(Int32.Parse(monthlyRate.Text), int.Parse(overtimeAmount.Text)));
+                
                 employeeController.addEmployeeToList(employee);
                 this.Hide();
                 MainWindow main = new MainWindow();

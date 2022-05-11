@@ -20,8 +20,13 @@ namespace Firma.views
             {
                 int monthlyRateValue = Int32.Parse(monthlyRate.Text);
                 int overtimeAmountValue = Int32.Parse(overtimeAmount.Text);
+                Contract contract;
 
-                Contract contract = new Contract(contractType.Text, monthlyRateValue, overtimeAmountValue);
+                if (contractType.Text.Equals("Etat"))
+                    contract = new Fulltime(monthlyRateValue, overtimeAmountValue);
+                else
+                    contract = new Internship(monthlyRateValue, overtimeAmountValue);
+
                 Employee employee = employeeController.getEmployeeById(employeeId);
                 employee.setContract(contract);
 
