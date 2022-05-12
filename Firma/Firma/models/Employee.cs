@@ -1,29 +1,33 @@
-﻿using System;
+﻿using Firma.models;
+using System;
 
-
-class Employee
+namespace Firma.models
 {
-    private String name;
-    private String surname;
-    private Contract contract;
-
-
-    public Employee(String name, String surname)
+    public class Employee
     {
-        this.name = name;
-        this.surname = surname;
-        this.contract = new Internship();
-    }
+        private String name;
+        private String surname;
+        private Contract contract;
 
-    public void setContract(Contract contract) => this.contract = contract;
 
-    public double getSalary()
-    {
-        return this.contract.Salary();
-    }
+        public Employee(String name, String surname)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.contract = new Internship();
+        }
 
-    public override string ToString()
-    {
-        return $"{this.name} {this.surname} {this.contract.Salary()}";
+        public void setContract(Contract contract) => this.contract = contract;
+
+        public double getSalary()
+        {
+            return this.contract.Salary();
+        }
+
+        public override string ToString()
+        {
+            return $"{this.name} {this.surname} {this.contract.Salary()}";
+        }
     }
 }
+

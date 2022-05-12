@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Firma.controllers;
+using Firma.models;
+using System;
 using System.Windows;
 
 namespace Firma.views

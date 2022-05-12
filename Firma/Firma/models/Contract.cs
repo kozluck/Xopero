@@ -1,42 +1,12 @@
 ﻿using System;
 
-abstract class Contract
+namespace Firma.models
 {
-    protected double monthlyRate;
-    protected int overtimeAmount;
-
-    public abstract double Salary();
-}
-class Internship : Contract
-{
-    public Internship(double monthlyRate = 0, int overtimeAmount = 0)
+    public abstract class Contract
     {
-        if (monthlyRate == 0)
-            this.monthlyRate = 2000;
-        else
-            this.monthlyRate = monthlyRate;
-    }
+        protected double monthlyRate;
+        protected int overtimeAmount;
 
-    public override double Salary()
-    {
-        return this.monthlyRate;
-    }
-}
-
-class Fulltime : Contract
-{
-    public Fulltime(double monthlyRate = 0, int overtimeAmount = 0)
-    {
-        if (monthlyRate == 0)
-            this.monthlyRate = 4600;
-        else
-            this.monthlyRate = monthlyRate;
-
-        this.overtimeAmount = overtimeAmount;
-    }
-
-    public override double Salary()
-    {
-        return this.monthlyRate + this.overtimeAmount * (monthlyRate / 60);
+        public abstract double Salary();
     }
 }
