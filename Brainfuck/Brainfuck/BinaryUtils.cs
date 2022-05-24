@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Brainfuck
 {
@@ -17,8 +13,8 @@ namespace Brainfuck
         {
             return String.Join("", data.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
         }
-        
-        public static String ByteArrayToString(byte[] bytes) 
+
+        public static String ByteArrayToString(byte[] bytes)
         {
             return Encoding.ASCII.GetString(bytes);
         }
