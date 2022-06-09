@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
 using System.Windows;
-using System.IO;
-
+using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace diffViewer
 {
@@ -14,7 +14,7 @@ namespace diffViewer
         {
             InitializeComponent();
 
-            if(!FileCompare(firstFileName, secondFileName))
+            if (!FileCompare(firstFileName, secondFileName))
             {
                 var firstFileText = System.IO.File.ReadAllLines(firstFileName).ToList();
                 var secondFileText = System.IO.File.ReadAllLines(secondFileName).ToList();
@@ -22,35 +22,60 @@ namespace diffViewer
                 var inFirstFileOnly = firstFileText.Except(secondFileText).ToList();
                 var inSecondFileOnly = secondFileText.Except(firstFileText).ToList();
 
+                var p = new Paragraph();
 
-                List<string> fixedInFirstFileOnly = new List<string>();
-                List<string> fixedInSecondFileOnly = new List<string>();
+                bool checking = true;
+                int i = 0;
 
-                foreach (var str in inFirstFileOnly)
+                while (checking)
                 {
-                    int lineNumber = firstFileText.IndexOf(str) + 1;
-                    str.Replace("\t", "");
-                    fixedInFirstFileOnly.Add(lineNumber + ": " + str);
-                }
-                    
+                    string str = firstFileText[i];
+                    i++;
+                    foreach (var strInSecondFile in secondFileText)
+                    {
+                        int lineNumber = secondFileText.IndexOf(strInSecondFile);
+                        Run run;
 
-                foreach (var str in inSecondFileOnly)
-                {
-                    int lineNumber = secondFileText.IndexOf(str) + 1;
-                    str.Replace("\t", "");
-                    fixedInSecondFileOnly.Add(lineNumber + ": " + str);
+                        if (str.Equals(strInSecondFile))
+                        {
+                            run = new Run(lineNumber + ": " + strInSecondFile + "\n");
+                            p.Inlines.Add(run);
+                            break;
+                        }
+
+                        if (inFirstFileOnly.Contains(str))
+                        {
+                            lineNumber = firstFileText.IndexOf(str);
+                            run = new Run(lineNumber + ": " + str + "\n")
+                            {
+                                Background = Brushes.IndianRed
+                            };
+                            p.Inlines.Add(run);
+                            inFirstFileOnly.Remove(str);
+                            break;
+                        }
+
+                        if (inSecondFileOnly.Contains(strInSecondFile))
+                        {
+                            run = new Run(lineNumber + ": " + strInSecondFile + "\n")
+                            {
+                                Background = Brushes.LawnGreen
+                            };
+                            p.Inlines.Add(run);
+                            inSecondFileOnly.Remove(strInSecondFile);
+                            continue;
+                        }
+
+                    }
+                    if (inFirstFileOnly.Count == 0 && inSecondFileOnly.Count == 0 && i == firstFileText.Count) checking = false;
                 }
 
-                firstFileTextBlock.Text = string.Join("\n", fixedInFirstFileOnly);
-                secondFileTextBlock.Text = string.Join("\n", fixedInSecondFileOnly);
+                textBox.Document.Blocks.Add(p);
             }
             else
             {
-                firstLabel.Content = "Files are the same.";
-                firstLabel.FontSize = 50;
-                secondLabel.Visibility = Visibility.Hidden;
-                firstFileTextBlock.Visibility = Visibility.Hidden;
-                secondFileTextBlock.Visibility = Visibility.Hidden;
+                label.Content = "There is no difference between these files.";
+                textBox.Visibility = Visibility.Hidden;
             }
         }
 
@@ -62,7 +87,7 @@ namespace diffViewer
             FileStream fs2;
 
             if (file1 == file2) return true;
-            
+
             fs1 = new FileStream(file1, FileMode.Open);
             fs2 = new FileStream(file2, FileMode.Open);
 
