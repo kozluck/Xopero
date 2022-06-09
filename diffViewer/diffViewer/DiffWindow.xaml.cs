@@ -49,6 +49,8 @@ namespace diffViewer
                 firstLabel.Content = "Files are the same.";
                 firstLabel.FontSize = 50;
                 secondLabel.Visibility = Visibility.Hidden;
+                firstFileTextBlock.Visibility = Visibility.Hidden;
+                secondFileTextBlock.Visibility = Visibility.Hidden;
             }
         }
 

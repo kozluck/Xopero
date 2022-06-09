@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="firstFile" Content="Choose First File" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Width="200" Height="30" Click="firstFile_Click"/>
-        <Button x:Name="secondFile" Content="Choose Second File" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Width="200" Height="30" Click="secondFile_Click"/>
+        <Button x:Name="firstFile" Content="Old version of file" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Width="200" Height="30" Click="firstFile_Click"/>
+        <Button x:Name="secondFile" Content="New version of file" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Width="200" Height="30" Click="secondFile_Click"/>
         <Button x:Name="checkDifferences" Content="Check differences" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="checkDifferences_Click"/>
 
     </Grid>

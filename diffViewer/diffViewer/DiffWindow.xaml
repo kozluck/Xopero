@@ -7,10 +7,18 @@
         mc:Ignorable="d"
         Title="DiffWindow" Height="800" Width="1200">
     <Grid>
-        <Label x:Name="secondLabel" Content="Added lines to second file" HorizontalAlignment="Left" Margin="650,60,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="firstLabel" Content="Lines in first file only" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <TextBlock x:Name="firstFileTextBlock" HorizontalAlignment="Left" Margin="50,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="500" FontSize="14"/>
-        <TextBlock x:Name="secondFileTextBlock" HorizontalAlignment="Left" Margin="650,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="500" FontSize="14"/>
+        <Label x:Name="secondLabel" Content="Lines added in second file" HorizontalAlignment="Left" Margin="650,60,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="firstLabel" Content="Lines removed in second file" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <TextBlock x:Name="firstFileTextBlock" HorizontalAlignment="Left" Margin="50,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontSize="14">
+            <TextBlock.Background>
+                <SolidColorBrush Color="#E5FF0000" Opacity="0.6"/>
+            </TextBlock.Background>
+        </TextBlock>
+        <TextBlock x:Name="secondFileTextBlock" HorizontalAlignment="Left" Margin="650,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontSize="14">
+            <TextBlock.Background>
+                <SolidColorBrush Color="#FF69FF72" Opacity="0.6"/>
+            </TextBlock.Background>
+        </TextBlock>
 
     </Grid>
 </Window>
