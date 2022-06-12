@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\c#projects\Firma\Firma\obj\Debug\net6.0-windows\
+C:\Users\vipel\Source\Repos\Xopero\Firma\Firma\obj\Debug\net6.0-windows\
 Firma
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\c#projects\Firma\Firma\App.xaml
+C:\Users\vipel\Source\Repos\Xopero\Firma\Firma\App.xaml
 3314309361
 
-82076461348
+10628816624
 194-1951243044
 MainWindow.xaml;views\addEmployeeView.xaml;views\editContractView.xaml;
 
-False
+True
 
