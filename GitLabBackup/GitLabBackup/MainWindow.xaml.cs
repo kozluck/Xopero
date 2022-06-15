@@ -7,6 +7,9 @@ namespace GitLabBackup
 
     public partial class MainWindow : Window
     {
+        private APIHandler handler = new();
+        private DBManager dbManager = new();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -14,17 +17,35 @@ namespace GitLabBackup
 
         private void doBackup_Click(object sender, RoutedEventArgs e)
         {
-            APIHandler handler = new APIHandler();
-            List<Issue> issues = handler.getIssuesFromApi("36884934");
-            List<Note> notes = handler.getNotesFromIssue("36884934", 7);
+            string id = projectId.Text;
 
-            //List<Note> notes = handler.getNotesFromIssue("36884934",7);
-            //handler.postNotes(notes, "36884934", 7);
+            List<Issue> issues = handler.getIssuesFromApi(id);
+            List<Note> allNotes = new List<Note>();
 
-            DBManager db = new DBManager();
-            db.saveIssues(issues);
-            db.saveNotes(notes);
+            issues.ForEach(issue =>
+            {
+                allNotes.AddRange(handler.getNotesFromIssue(id, issue.iid));
+            });
 
+            dbManager.saveIssues(issues);
+            dbManager.saveNotes(allNotes);
+
+            if (label.Visibility != Visibility.Visible) label.Visibility = Visibility.Visible;
+            label.Content = "Backup was succesfull, data is saved in database.";
+        }
+
+        private void restore_Click(object sender, RoutedEventArgs e)
+        {
+            List<Issue> issues = dbManager.getIssues();
+            List<Note> notes = dbManager.getNotes();
+            int projectId = issues[0].project_id;
+
+            handler.postIssues(issues);
+            System.Threading.Thread.Sleep(2000);
+            handler.postNotes(notes, projectId);
+
+            if (label.Visibility != Visibility.Visible) label.Visibility = Visibility.Visible;
+            label.Content = "Backup is restored on GitLab.";
         }
     }
 }

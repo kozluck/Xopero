@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Repository URL:" HorizontalAlignment="Left" Margin="170,110,0,0" VerticalAlignment="Top" Height="30"/>
-        <TextBox x:Name="url" HorizontalAlignment="Left" Margin="310,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Height="30"/>
-        <Button x:Name="doBackup" Content="Start Backup" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" FontSize="14" Click="doBackup_Click"/>
+        <Label Content="Project id:" HorizontalAlignment="Left" Margin="171,110,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="projectId" HorizontalAlignment="Left" Margin="310,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Height="30"/>
+        <Button x:Name="doBackup" Content="Start Backup" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" FontSize="14" Click="doBackup_Click" Margin="0,166,0,0"/>
+        <Button x:Name="restore" Content="Restore last backup" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Click="restore_Click"/>
+        <Label x:Name="label" Content="" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
 
     </Grid>
 </Window>
