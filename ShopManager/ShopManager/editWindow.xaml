@@ -1,19 +1,18 @@
-﻿<Window x:Class="ShopManager.AddItemWindow"
+﻿<Window x:Class="ShopManager.editWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopManager"
         mc:Ignorable="d"
-        Title="AddItemWindow" Height="450" Width="800">
-    <Grid Margin="0,0,0,-6">
+        Title="editWindow" Height="450" Width="800">
+    <Grid>
         <Label Content="Name of item:" HorizontalAlignment="Left" Margin="167,100,0,0" VerticalAlignment="Top"/>
         <Label Content="Price of item:" HorizontalAlignment="Left" Margin="173,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.756,0.42"/>
         <Label Content="Quantity:" HorizontalAlignment="Left" Margin="194,180,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="ItemName" HorizontalAlignment="Left" Margin="291,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="20"/>
         <TextBox x:Name="ItemPrice" HorizontalAlignment="Left" Margin="291,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="20"/>
         <TextBox x:Name="ItemQuantity" HorizontalAlignment="Left" Margin="291,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="20"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="333,253,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="333,253,0,0" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>

@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ShopManager
 {
@@ -23,22 +11,35 @@ namespace ShopManager
         {
             InitializeComponent();
 
+            //Aby zmienic rodzaj bazy danych wystarczy zmienic obiekt jaki przyjmuje DBManager na: SQLite lub LiteDBManager
             DBManager.db = new SQLite();
-            List<Item> items = dbManager.GetItems();
-            ItemsGrid.ItemsSource = items;
+            ItemsGrid.ItemsSource = dbManager.GetItems();
+        }
+        protected override void OnContentRendered(EventArgs e)
+        {
+            ItemsGrid.ItemsSource = dbManager.GetItems();
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             AddItemWindow window = new();
             window.Show();
+            this.Hide();
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
-            Item item = (Item) ItemsGrid.SelectedItem;
+            Item item = (Item)ItemsGrid.SelectedItem;
             dbManager.deleteItemById(item.Id);
             ItemsGrid.ItemsSource = dbManager.GetItems();
+        }
+
+        private void editBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Item item = (Item)ItemsGrid.SelectedItem;
+            editWindow editWindow = new(item.Id);
+            editWindow.Show();
+            this.Hide();
         }
     }
 }

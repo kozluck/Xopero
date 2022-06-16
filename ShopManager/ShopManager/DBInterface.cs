@@ -8,6 +8,7 @@ namespace ShopManager
         public void deleteItemById(int id);
         public void addItem(Item item);
         public void editItem(Item item);
+        public int getNewId();
 
     }
 }

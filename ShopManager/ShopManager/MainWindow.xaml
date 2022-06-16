@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,217" Name="ItemsGrid"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,217" Name="ItemsGrid" IsReadOnly="True"/>
         <Button x:Name="delBtn" Content="Usuń zaznaczony produkt" HorizontalAlignment="Left" Margin="178,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.514,0.497" Height="28" Click="delBtn_Click" />
         <Button x:Name="editBtn" Content="Edytuj zaznaczony produkt" HorizontalAlignment="Left" Margin="364,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.514,0.497" Height="28" Click="editBtn_Click"/>
         <Button x:Name="addBtn" Content="Dodaj nowy produkt" HorizontalAlignment="Left" Margin="30,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.514,0.497" Height="28" Click="addBtn_Click"/>
