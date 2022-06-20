@@ -2,31 +2,33 @@
 
 namespace ShopManager
 {
-    internal class DBManager
+    public class DBManager
     {
-        public static DBInterface db { get; set; }
+        private DBInterface _dbInterface;
+
+        public DBManager(DBInterface db) { _dbInterface = db; }
 
         public List<Item> GetItems()
         {
-            return db.getItems();
+            return _dbInterface.getItems();
         }
 
         public void deleteItemById(int id)
         {
-            db.deleteItemById(id);
+            _dbInterface.deleteItemById(id);
         }
         public void addItem(Item item)
         {
-            db.addItem(item);
+            _dbInterface.addItem(item);
         }
         public void editItem(Item item)
         {
-            db.editItem(item);
+            _dbInterface.editItem(item);
         }
 
         public int GetNewId()
         {
-            return db.getNewId();
+            return _dbInterface.getNewId();
         }
     }
 }

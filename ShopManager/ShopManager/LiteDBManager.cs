@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ShopManager
 {
-    class LiteDBManager : DBInterface
+    public class LiteDBManager : DBInterface
     {
         LiteDatabase db = new LiteDatabase(@"Filename={}; Connection=Shared;");
         public void addItem(Item item)

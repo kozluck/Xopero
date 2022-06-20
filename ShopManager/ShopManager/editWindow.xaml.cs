@@ -8,7 +8,7 @@ namespace ShopManager
     public partial class editWindow : Window
     {
 
-        private DBManager dbManager = new DBManager();
+        private DBManager dbManager = new DBManager(new SQLite());
         private Item item;
 
         public editWindow(int id)

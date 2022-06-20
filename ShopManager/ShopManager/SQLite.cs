@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace ShopManager
 {
-    internal class SQLite : DBInterface
+    public class SQLite : DBInterface
     {
         SQLiteConnection conn = new SQLiteConnection("Data Source=data.db;Version=3;");
 

@@ -2,7 +2,7 @@
 
 namespace ShopManager
 {
-    internal interface DBInterface
+    public interface DBInterface
     {
         public List<Item> getItems();
         public void deleteItemById(int id);

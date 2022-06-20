@@ -3,12 +3,9 @@ using System.Windows;
 
 namespace ShopManager
 {
-    /// <summary>
-    /// Logika interakcji dla klasy AddItemWindow.xaml
-    /// </summary>
     public partial class AddItemWindow : Window
     {
-        DBManager dbManager = new DBManager();
+        DBManager dbManager = new (new SQLite());
 
         public AddItemWindow()
         {

@@ -6,13 +6,12 @@ namespace ShopManager
 
     public partial class MainWindow : Window
     {
-        DBManager dbManager = new();
+        //Aby zmienic rodzaj bazy danych wystarczy zmienic obiekt jaki przyjmuje DBManager na: SQLite lub LiteDBManager
+        DBManager dbManager = new(new SQLite());
         public MainWindow()
         {
             InitializeComponent();
 
-            //Aby zmienic rodzaj bazy danych wystarczy zmienic obiekt jaki przyjmuje DBManager na: SQLite lub LiteDBManager
-            DBManager.db = new SQLite();
             ItemsGrid.ItemsSource = dbManager.GetItems();
         }
         protected override void OnContentRendered(EventArgs e)
