@@ -18,7 +18,7 @@ namespace GitHubComments
             } while (owner == null || repo == null);
 
             ApiHandler handler = new(owner, repo);
-            List<Issue> issuesAndPulls = handler.GetIssuesAndPulls();
+            List<Root> issuesAndPulls = handler.GetIssuesAndPulls();
             int number = 0;
 
             do

@@ -2,13 +2,9 @@
 {
     public class JSONModel
     {
-        public class Issue
+        public class Root
         {
             public int number { get; set; }
-        }
-        public class Pull
-        {
-            public int id { get; set; }
         }
     }
 }

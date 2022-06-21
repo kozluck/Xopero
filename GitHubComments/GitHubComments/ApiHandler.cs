@@ -8,10 +8,9 @@ using static GitHubComments.JSONModel;
 public class ApiHandler
 {
     private HttpClient httpClient;
-    string uri;
+    private string uri;
     public ApiHandler(string owner, string repo)
     {
-
         httpClient = new HttpClient();
 
         uri = String.Format($"https://api.github.com/repos/{owner}/{repo}", owner, repo).ToString();
@@ -19,16 +18,16 @@ public class ApiHandler
         httpClient.DefaultRequestHeaders.Add("User-Agent", "kozluck");
     }
 
-    public List<Issue> GetIssuesAndPulls()
+    public List<Root> GetIssuesAndPulls()
     {
         HttpResponseMessage response = httpClient.GetAsync(uri + "/issues").Result;
         var jsonInString = response.Content.ReadAsStringAsync().Result;
-        List<Issue> data = null;
+        List<Root> data = null;
         try
         {
-            data = System.Text.Json.JsonSerializer.Deserialize<List<Issue>>(jsonInString);
+            data = System.Text.Json.JsonSerializer.Deserialize<List<>>(jsonInString);
         }
-        catch (Exception)
+        catch (System.Text.Json.JsonException)
         {
             Console.WriteLine("Run application once again, with correct data.");
             Environment.Exit(0);
@@ -37,12 +36,11 @@ public class ApiHandler
     }
 
 
-    public void writeCommentsToIssuesAndPulls(List<Issue> issuesAndPulls, int numberOfComments)
+    public void writeCommentsToIssuesAndPulls(List<Root> issuesAndPulls, int numberOfComments)
     {
         issuesAndPulls.ForEach(e =>
         {
             HttpResponseMessage mes = new HttpResponseMessage();
-
 
             for (int i = 1; i <= numberOfComments; i++)
             {
