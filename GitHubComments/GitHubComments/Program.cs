@@ -8,16 +8,18 @@ namespace GitHubComments
     {
         static void Main(string[] args)
         {
-            string owner = String.Empty, repo = String.Empty;
+            string owner = String.Empty, repo = String.Empty, token = String.Empty;
             do
             {
-                Console.WriteLine("Insert owner name:");
+                Console.WriteLine("Insert repository owner name:");
                 owner = Console.ReadLine();
                 Console.WriteLine("Insert repository name:");
                 repo = Console.ReadLine();
-            } while (owner == null || repo == null);
+                Console.WriteLine("Insert your token:");
+                token = Console.ReadLine();
+            } while (owner == null || repo == null || token == null);
 
-            ApiHandler handler = new(owner, repo);
+            ApiHandler handler = new(owner, repo, token);
             List<Root> issuesAndPulls = handler.GetIssuesAndPulls();
             int number = 0;
 

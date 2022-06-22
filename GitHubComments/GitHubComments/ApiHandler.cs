@@ -9,12 +9,12 @@ public class ApiHandler
 {
     private HttpClient httpClient;
     private string uri;
-    public ApiHandler(string owner, string repo)
+    public ApiHandler(string owner, string repo, string token)
     {
         httpClient = new HttpClient();
 
         uri = String.Format($"https://api.github.com/repos/{owner}/{repo}", owner, repo).ToString();
-        httpClient.DefaultRequestHeaders.Add("Authorization", "token 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");
+        httpClient.DefaultRequestHeaders.Add("Authorization", "token " + token);
         httpClient.DefaultRequestHeaders.Add("User-Agent", "kozluck");
     }
 
@@ -25,7 +25,7 @@ public class ApiHandler
         List<Root> data = null;
         try
         {
-            data = System.Text.Json.JsonSerializer.Deserialize<List<>>(jsonInString);
+            data = System.Text.Json.JsonSerializer.Deserialize<List<Root>>(jsonInString);
         }
         catch (System.Text.Json.JsonException)
         {
@@ -48,12 +48,9 @@ public class ApiHandler
                 mes = httpClient.PostAsync(uri + "/issues/" + e.number + "/comments", new StringContent(body)).Result;
                 while (mes.IsSuccessStatusCode == false)
                 {
-                    Console.WriteLine("Waiting");
                     Thread.Sleep(30000);
                     mes = httpClient.PostAsync(uri + "/issues/" + e.number + "/comments", new StringContent(body)).Result;
                 };
-                Console.WriteLine("Success");
-
             }
         });
 
